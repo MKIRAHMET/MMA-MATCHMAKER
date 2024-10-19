@@ -1,7 +1,6 @@
 {% extends "_base.html" %}
 {% block content %}
-<h5 class = "title"><span>Welcome to FlaskFM!</span></h5>
-Welcome to the world of sharing song preferences. You can see music playlists of people all around the world. Below you can find a list of our current users. Feel free to explore what music they like.
+<h5 class = "title"><span>Welcome to Matchmaker!</span></h5>
     {% if current_users|length == 0 %}
     <p style="color:blue;"> Ooops. There are no users currently in your database. Make sure to add them first. </p>
     {% endif %}

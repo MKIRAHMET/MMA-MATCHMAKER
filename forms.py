@@ -34,8 +34,8 @@ class FightForm(FlaskForm):
     submit = SubmitField('Post')
 
 class FighterForm(FlaskForm):
-  Name = StringField('Name')
-  Surname = StringField('Surname')
+  name = StringField('Name')
+  surname = StringField('Surname')
   weight_classes = [
         ('Flyweight', 'Flyweight (125 lb / 56.7 kg)'),
         ('Bantamweight', 'Bantamweight (135 lb / 61.2 kg)'),
@@ -51,6 +51,6 @@ class FighterForm(FlaskForm):
         ('Heavyweight', 'Heavyweight (265 lb / 120.2 kg)'),
     ]
   weight_class = SelectField('Select Weight Class:', choices=weight_classes, validators=[DataRequired()])
-  Team = StringField('Team')
-  Coach = StringField('Coach')
+  team = StringField('Team')
+  coach = StringField('Coach')
   submit = SubmitField('Add Fighter')
