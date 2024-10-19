@@ -1,0 +1,43 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<h2>Hi, admin. Would you like to add more Fighters?</h2>
+<div class="row">
+  <div class="column" style="background-color:#BDB76B;">
+    <h2>fighters:</h2>
+
+    {% for fighter in Fighters%}
+        <p>{{fighter}}</p>
+    {% endfor %}
+  </div>
+
+<div class="formwrapper">
+  <h2 class="title">Add new fighter:</h2>
+  <form action="" method="post" novalidate>
+  {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=50) }}<br>
+
+        </p>
+        <p>
+            {{ form.surname.label }}<br>
+            {{ form.surname(size=50) }}<br>
+        </p>
+        <p>
+            {{ form.weight_class.label }}<br>
+            {{ form.weight_class() }}
+        </p>
+        <p>
+            {{ form.team.label }}<br>
+            {{ form.team() }}
+        </p>
+        <p>
+            {{ form.coach.label }}<br>
+            {{ form.coach() }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</div>
+{% endblock %}
