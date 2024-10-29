@@ -1,0 +1,16 @@
+<html>
+    <head>
+      <title>MatchMaker</title>
+      <meta charset = "UTF-8">
+      <link rel="stylesheet" type = "text/css" href="/static/my_style.css">
+    </head>
+    <body>
+      <div class="topnav">
+          <a href="/">Main</a>
+          <a href="/add_item">ADD FIGHT</a>
+          <a href="{{ url_for('profile', user_id = user.id)}}">MY PROFILE {{user.username}}</a>
+          <a href="/logout">Log out</a>
+      </div>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{% extends base_template %}
+
+{% block content %}
+    <h1>Edit Fight for {{ user.username }}</h1>
+
+    <form method="POST">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        
+        <div>
+            <label for="blue_corner">Blue Corner Fighter:</label>
+            <textarea id="blue_corner" name="blue_corner" required>{{ fight.blue_corner }}</textarea>
+        </div>
+        
+        <div>
+            <label for="red_corner">Red Corner Fighter:</label>
+            <textarea id="red_corner" name="red_corner" required>{{ fight.red_corner }}</textarea>
+        </div>
+
+        <div>
+            <label for="styles">Fighting Styles:</label>
+            <textarea id="styles" name="styles" required>{{ fight.styles }}</textarea>
+        </div>
+
+        <button type="submit">Update Fight</button>
+    </form>
+
+    <a href="{{ url_for('profile', user_id=user.id) }}">Back to Profile</a>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends base_template %}
+
+{% block content %}
+<h2>Hi, {{ user[username] }} Would you like to add more Fights?</h2>
+
+<div class="row">
+    <div class="column" style="background-color:#BDB76B;">
+        <h2>Fights:</h2>
+        {% if fight %}
+            {% for fightinfo in fight %}
+                <p>{{ fightinfo.red_corner }} vs {{ fightinfo.blue_corner }} - {{ fightinfo.weight_class }} - {{ fightinfo.styles }} </p>
+            {% endfor %}
+        {% else %}
+            <p>No fights added yet.</p>
+        {% endif %}
+    </div>
+
+<div class="formwrapper">
+  <h2 class="title">Add new fight:</h2>
+  <form action="" method="post" novalidate>
+  {{ form.hidden_tag() }}
+        <p>
+            {{ form.weight_class.label }}<br>
+            {{ form.weight_class() }}
+        </p>
+        <p>
+            {{ form.red_corner.label }}<br>
+            {{ form.red_corner() }}<br>
+        </p>
+        <p>
+            {{ form.blue_corner.label }}<br>
+            {{ form.blue_corner() }}
+        </p>
+        <p>
+            {{ form.styles.label }}<br>
+            {{ form.styles() }}
+        </p>
+        <p>
+            {{ form.round.label }}<br>
+            {{ form.round() }}
+        </p>
+        <p>
+            {{ form.time.label }}<br>
+            {{ form.time() }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</div>
+{% endblock %}
+
+
+

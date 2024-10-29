@@ -1,16 +1,19 @@
-{% extends "_base.html" %}
+{% extends base_template %}
 
 {% block content %}
-
 <h2>Hi, admin. Would you like to add more Fighters?</h2>
-<div class="row">
-  <div class="column" style="background-color:#BDB76B;">
-    <h2>fighters:</h2>
 
-    {% for fighter in Fighters%}
-        <p>{{fighter}}</p>
-    {% endfor %}
-  </div>
+<div class="row">
+    <div class="column" style="background-color:#BDB76B;">
+        <h2>Fighters:</h2>
+        {% if fighters %}
+            {% for fighter in fighters %}
+                <p>{{ fighter.name }} {{ fighter.surname }} - {{ fighter.weight_class }} - {{fighter.gender}} </p>
+            {% endfor %}
+        {% else %}
+            <p>No fighters added yet.</p>
+        {% endif %}
+    </div>
 
 <div class="formwrapper">
   <h2 class="title">Add new fighter:</h2>
@@ -37,7 +40,14 @@
             {{ form.coach.label }}<br>
             {{ form.coach() }}
         </p>
+        <p>
+            {{ form.gender.label }}<br>
+            {{ form.gender() }}
+        </p>
         <p>{{ form.submit() }}</p>
     </form>
 </div>
 {% endblock %}
+
+
+

@@ -1,12 +1,12 @@
-{% extends "_base.html" %}
+{% extends base_template %}
 {% block content %}
 <h5 class = "title"><span>Welcome to Matchmaker!</span></h5>
     {% if current_users|length == 0 %}
-    <p style="color:blue;"> Ooops. There are no users currently in your database. Make sure to add them first. </p>
+    <p style="color:blue;"> Ooops. There are no users currently in your database. </p>
     {% endif %}
     <ul>
     {% for user in current_users %}
-    <li class = "link"><a href="{{ url_for('profile', user_id = user.id)}}">{{user}}</a></li>
+    <li class = "link"><a href="{{ url_for('profile', user_id = user.id)}}">{{user.username}}</a></li>
     {% endfor %}
     </ul>
 {% endblock %}

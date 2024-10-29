@@ -1,23 +1,21 @@
-{% extends "_base.html" %}
+{% extends base_template %}
 
 {% block content %}
-<h2>Hi, {{user.username}}. Would you like to edit your playlist?</h2>
-
-<div class="row">
-  <div class="column" style="background-color:#BDB76B;">
-    <h2>Available songs:</h2>
-    {% for song in songs %}
-        <p>{{song}} {% if my_playlist %}<a href="{{url_for('add_item', user_id = user.id, song_id = song.id, playlist_id = my_playlist.id)}}">Add</a>{% endif %}</p>
-    {% endfor %}
-  </div>
-
-  <div class="column" style="background-color:#F0F8FF;">
-    <h2>Your current playlist:</h2>
-    {% if my_playlist %}
-    {% for song in my_playlist.items %}
-        <p>{{song}} <a href="{{url_for('remove_item', user_id = user.id, item_id = song.id)}}">Remove</a></p>
-    {%endfor%}
+    <h1>{{ user.username }}'s Profile</h1>  <!-- Displaying the user's name -->
+    <h2>Your Fights</h2>
+    
+    {% if my_fights %}
+        <ul>
+            {% for fight in my_fights %}
+                <li>
+                    <h3>{{ fight.red_corner }} vs {{ fight.blue_corner }}</h3>  <!-- Assuming your Fight model has a title attribute -->
+                    <p>Details: {{ fight.weight_class }} -{{ fight.styles }} - {{ fight.round }} </p>  <!-- Other attributes as necessary -->
+                    <a href="{{ url_for('edit_item', user_id=user.id, fight_id=fight.id) }}">Edit</a>
+                    <a href="{{ url_for('remove_item', user_id=user.id, item_id=fight.id) }}">Remove</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No fights found.</p>
     {% endif %}
-  </div>
-</div>
 {% endblock %}
